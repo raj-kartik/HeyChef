@@ -33,7 +33,7 @@ const Veg = () => {
             </View>
             
             <View style={{padding:10,borderRadius:5,justifyContent:'center',alignItems:'center',marginRight:5}}  >
-                <Pressable onPress={ ()=>{addButtonHandle(item.id, item.inCart, item.isAdded), item.isAdded=!item.isAdded }  } >
+                <Pressable onPress={ ()=>{item.isAdded=!item.isAdded ,addButtonHandle(item.id, item.inCart, item.isAdded)}  } >
                     {item.isAdded?
                         <IonIcons name="add-circle" color='#f2a030' size={30}  />: 
                         <IonIcons name="remove-circle" color='#f2a030' size={30}  />
