@@ -5,35 +5,35 @@ const VegFood = {
       "dishName": "Paneer Tikka",
       "ingredients": ["paneer", "yogurt", "spices", "bell peppers"],
       "imagUrl" : "https://www.indianveggiedelight.com/wp-content/uploads/2021/08/air-fryer-paneer-tikka-featured.jpg",
-      "inCart" : true
+      "inCart" : false,
     },
     {
       "id" :2,
       "dishName": "Vegetable Biryani",
       "ingredients": ["basmati rice", "mixed vegetables", "spices", "ghee"],
       "imagUrl" : "https://www.indianveggiedelight.com/wp-content/uploads/2021/08/air-fryer-paneer-tikka-featured.jpg",
-      "inCart" : true
+      "inCart" : false
     },
     {
       "id" :3,
       "dishName": "Chana Masala",
       "ingredients": ["chickpeas", "tomatoes", "onions", "spices"],
       "imagUrl" : "https://www.indianveggiedelight.com/wp-content/uploads/2021/08/air-fryer-paneer-tikka-featured.jpg",
-      "inCart" : true
+      "inCart" : false
     },
     {
       "id" :4,
       "dishName": "Aloo Gobi",
       "ingredients": ["potatoes", "cauliflower", "spices", "tomatoes"],
       "imagUrl" : "https://www.indianveggiedelight.com/wp-content/uploads/2021/08/air-fryer-paneer-tikka-featured.jpg",
-      "inCart" : true
+      "inCart" : false
     },
     {
       "id" :5,
       "dishName": "Palak Paneer",
       "ingredients": ["spinach", "paneer", "cream", "spices"],
       "imagUrl" : "https://www.indianveggiedelight.com/wp-content/uploads/2021/08/air-fryer-paneer-tikka-featured.jpg",
-      "inCart" : true
+      "inCart" : false
     }
   ]
 }

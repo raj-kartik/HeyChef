@@ -12,28 +12,12 @@ export default function Home() {
 
     return (
         <View style={styles.container}>
-
-            {/* HEADER */}
-            {/* background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%); */}
-            
-
-            {/* POST */}
-
-
-            <LinearGradient
-                colors={['#57102c','#ffecd2','#57102c']}
-                start={{x:0.5, y:0.05}}
-
-                // x = 0 : right || left = 1
-                end ={{x:1,y:3}}
-
-                style={styles.postContainer}
-            >
+            <View   style={styles.postContainer}    >
                 <ScrollView>
                     <View style={{ flex: 1 }} >
 
                         <View style={styles.cardView} >
-                            <Card  name={'HeyChef'} fontColor={'#7d5524'} heading2={'#000'} about={'We are here to fulfill your craving'} color1={'#ffecd2'} color2={'#57102c'}  NameSize={60} AboutSize={25} ImportImage={IntroImage} ImageWidth={100} ImageHeight={120} />
+                            <Card  name={'HeyChef'} fontColor={'#ffecd2'} heading2={'#ffecd2'} about={'We are here to fulfill your craving'} color1={'#57102c'} color2={'#57102c'}  NameSize={60} AboutSize={20} ImportImage={IntroImage} ImageWidth={'100%'} ImageHeight={120} />
                         </View>
 
                         {/* 
@@ -48,9 +32,9 @@ export default function Home() {
                             <Text style={{ color: '#f5eee4', fontFamily:'coolvetica compressed hv' ,fontWeight: 'bold', marginTop: 2, fontSize: 20 }} >Our Service</Text>
 
 
-                            <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center' }} >
+                            <View style={{ flexDirection: 'row' ,justifyContent: 'space-evenly', alignItems: 'center' }} >
 
-                                <View style={{ marginVertical: 5, justifyContent: 'center', alignItems: 'center', textAlign: 'center' }} >
+                                <View style={{ marginVertical: 5, justifyContent: 'center' ,alignItems: 'center' ,textAlign: 'center' }} >
                                     <Pressable onPress={()=>navigation.navigate('ChefForDay')}  style={styles.DurationStyle} >
                                         <Image style={styles.DurationImageStyle} source={require('../../Images/chefday.jpeg')} />
                                         <Text style={styles.DurationText} >
@@ -95,21 +79,21 @@ export default function Home() {
 
                         </View>
                         
-                        <View style={{padding:10,backgroundColor:'#ffecd2', margin:5, borderRadius:5, padding:10}} >
-                            <Text style={{color:'#7d5524', textAlign:'center',fontWeight:"bold",fontSize:15}} >Get cook for one-time at ₹250</Text>
+                        <View style={{padding:10,backgroundColor:'#e3b3aa', margin:5, borderRadius:5, padding:10}} >
+                            <Text style={{color:'#57102c', textAlign:'center',fontWeight:"bold",fontSize:15}} >Get cook for one-time at ₹250</Text>
                         </View>
 
                         {/* About US */}
                         <View style={{marginHorizontal:5}} >
                             <View>
-                                <Card name={'We cook with care'} fontColor={'#ffecd2'} color1={'#57102c'} color2={'#fcb69f'} NameSize={40} ImportImage={AboutImage} ImageWidth={120} ImageHeight={100} />
+                                <Card name={'We cook with care'} fontColor={'#ffecd2'} color1={'#57102c'} color2={'#e3b3aa'} NameSize={30} ImportImage={AboutImage} ImageWidth={100} ImageHeight={100} />
                             </View>
 
                         </View>
 
                     </View>
                 </ScrollView>
-            </LinearGradient>
+            </View>
 
         </View>
     )
@@ -119,6 +103,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
+        // backgroundColor:'#cfa59b'
     },
     postContainer: {
         flex: 15,
@@ -159,8 +144,8 @@ const styles = StyleSheet.create({
         // alignItems:'center',
         textAlign: 'center',
         elevation:2,
-        borderBottomEndRadius:10,
-        borderBottomStartRadius:10
+        borderRadius:10,
+        backgroundColor:'#57102c'
     },
     suggestContainer:{
         flexDirection:'row'

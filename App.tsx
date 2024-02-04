@@ -13,6 +13,7 @@ import RoyalFullTimeChef from './src/ChefDuration/RoyalFullTimeCook/RoyalFullTim
 import BookingDetails from './src/Bookings/BookingDetails';
 import Payment from './src/Payment/Payment';
 import { AuthProvider, useAuth } from './context/AuthContext';
+import History from './src/History/History';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -20,7 +21,7 @@ export default function App() {
     <AuthProvider>
 
       <NavigationContainer>
-        <Stack.Navigator >
+        <Stack.Navigator screenOptions={{ statusBarColor:'#57102c', headerStyle:{backgroundColor:'#57102c'}, headerTintColor:'#d4c8ae' }}   >
           <Stack.Screen name='Login' options={{ headerShown: false }} component={Login} />
           <Stack.Screen name='Blank' options={{ headerShown: false }} component={Blank} />
           <Stack.Screen name='Signup' options={{ headerShown: false }} component={Signup} />
@@ -28,11 +29,13 @@ export default function App() {
           <Stack.Screen name='ChefForMonth' options={{ headerShown: false }} component={ChefForMonth} />
           <Stack.Screen name='ChefParty' options={{ headerShown: false }} component={ChefForParty} />
           <Stack.Screen name='RoyalChef' options={{ headerShown: false }} component={RoyalFullTimeChef} />
-          <Stack.Screen name='Profile' component={Details} />
-          <Stack.Screen name='Payment' component={Payment} options={{ headerStyle: { backgroundColor: '#57102c' }, headerShadowVisible: false, headerTintColor: '#d4c8ae' }} />
+          <Stack.Screen name='Payment' component={Payment} options={{  headerShadowVisible: false,  }} />
           <Stack.Screen name='Booking Details' options={{ headerStyle: { backgroundColor: '#57102c' }, headerTintColor: '#d4c8ae' }} component={BookingDetails} />
+          <Stack.Screen name='Profile' component={Details} />
+          <Stack.Screen name='History' component={History} />
         </Stack.Navigator>
       </NavigationContainer>
+      
     </AuthProvider>
   )
 }

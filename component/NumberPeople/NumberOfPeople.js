@@ -19,7 +19,7 @@ const NumberOfPeople = () => {
                     <Text style={{color:'#000'}} >Select number of people</Text>
                 </View>
 
-                <View style={{flexDirection:'row', backgroundColor:'#faf0d9',borderRadius:10,marginHorizontal:10,alignItems:'center'}} >
+                <View style={{flexDirection:'row', backgroundColor:'#faf0d9',borderRadius:10,marginHorizontal:10,alignItems:'center', paddingHorizontal:10}} >
 
                     <Pressable onPress={()=>setPeople(numOfPeople+1)} >
                         <IonIcons name='add-circle-sharp' size={25} color={'#401d11'} />
@@ -29,7 +29,7 @@ const NumberOfPeople = () => {
                         <Text style={{fontSize:20, color:'#000'}} >{numOfPeople }</Text>
                     </View>
 
-                    <Pressable onPress={()=>setPeople(numOfPeople-1)}  >
+                    <Pressable onPress={()=>setNumOfPeople((prevCount) => (prevCount > 0 ? prevCount - 1 : 0))}  >
                         <IonIcons name='remove-circle-sharp' size={25} color={'#401d11'} />
                     </Pressable>
 

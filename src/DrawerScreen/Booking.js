@@ -2,8 +2,16 @@ import { Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import IonIcons from 'react-native-vector-icons/Ionicons'
 import LinearGradient from 'react-native-linear-gradient'
+import { useNavigation } from '@react-navigation/native'
 
 const Booking = () => {
+
+  const navigation = useNavigation();
+
+  const HistoryHandle = ()=>{
+    navigation.navigate('History')
+  }
+
   return (
     <LinearGradient 
     colors={['#57102c','#ffecd2','#57102c']}
@@ -29,7 +37,7 @@ const Booking = () => {
           <Text style={styles.textSubDuration} >Check your chefit here</Text>
         </View>
 
-        <Pressable>
+        <Pressable onPress={HistoryHandle} >
           <IonIcons name='arrow-forward' size={20} color='#e8d9b3' />
         </Pressable>
 
@@ -46,7 +54,7 @@ const Booking = () => {
           <Text style={styles.textSubDuration} >Check your chefit here</Text>
         </View>
         
-        <Pressable>
+        <Pressable onPress={HistoryHandle} >
           <IonIcons name='arrow-forward' size={20} color='#e8d9b3' />
         </Pressable>
 
@@ -65,7 +73,7 @@ const Booking = () => {
           <Text style={styles.textSubDuration} >See your party chef booking</Text>
         </View>
 
-        <Pressable>
+        <Pressable onPress={HistoryHandle} >
           <IonIcons name='arrow-forward' size={20} color='#e8d9b3' />
         </Pressable>
       </LinearGradient>

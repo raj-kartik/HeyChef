@@ -7,7 +7,7 @@ import Booking from '../DrawerScreen/Booking'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import IonIcons from 'react-native-vector-icons/Ionicons'
 import FontAwesome from 'react-native-vector-icons/FontAwesome6'
-
+import * as Animatable from 'react-native-animatable';
 
 const Blank = () => {
 
@@ -48,9 +48,11 @@ const Blank = () => {
           options={{
             tabBarColor:'#faf0d9',
             tabBarIcon: ({ color }) => (
-              <AntDesign name='rest' size={22} color={color} />
-            ),
 
+              <Animatable.View animation="zoomInUp" >
+                <AntDesign name='rest' size={22} color={color} />
+              </Animatable.View>
+            ),
           }}
         />
 

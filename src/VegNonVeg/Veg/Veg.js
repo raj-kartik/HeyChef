@@ -8,15 +8,15 @@ const Veg = () => {
 
     const [isPress, setIsPress] = useState(true);
 
-    const addButtonHandle = (itemId) =>{
-        console.log(itemId);
-        setIsPress(!isPress);
+    const addButtonHandle = (itemId, itemInCart, itemAdded) =>{
+        console.log(itemId, itemAdded);
 
+        itemAdded = !itemAdded
     }
 
     const vegDish = VegFood.indianVegetarianFood;
     const RenderItem = ({ item }) => (
-        <View style={{backgroundColor:'#57102c', marginHorizontal:5,marginVertical:8,width:'97%',marginRight:30, padding:5, borderRadius:10, flexDirection:'row',justifyContent:'space-between', alignItems:'center'}} >
+        <Pressable style={{backgroundColor:'#57102c', marginHorizontal:5,marginVertical:8,width:'97%',marginRight:30, padding:5, borderRadius:10, flexDirection:'row',justifyContent:'space-between', alignItems:'center'}} >
             <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}} >
                 <View style={{margin:10}} >
                     <Image source={{ uri: item.imagUrl }} style={{ width: 80, height: 80, borderRadius:50, borderWidth:2, padding:13, borderColor:'#fff' }} />
@@ -32,16 +32,16 @@ const Veg = () => {
                 </View>
             </View>
             
-                <View style={{padding:10,borderRadius:5,justifyContent:'center',alignItems:'center',marginRight:5}}  >
-                    <Pressable onPress={ ()=>addButtonHandle(item.id) } >
-                        {
-                            item.inCart ? <IonIcons name='add-circle' color='#f2a030' size={30} /> :  <IonIcons name='remove-circle' color='#f2a030' size={30} />
-                        }
-                        
-                    </Pressable>
-                </View>
-
-        </View>
+            <View style={{padding:10,borderRadius:5,justifyContent:'center',alignItems:'center',marginRight:5}}  >
+                <Pressable onPress={ ()=>{addButtonHandle(item.id, item.inCart, item.isAdded), item.isAdded=!item.isAdded }  } >
+                    {item.isAdded?
+                        <IonIcons name="add-circle" color='#f2a030' size={30}  />: 
+                        <IonIcons name="remove-circle" color='#f2a030' size={30}  />
+                    }
+                    
+                </Pressable>
+            </View>
+        </Pressable>
       );
 
   return (

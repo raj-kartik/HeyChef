@@ -1,35 +1,53 @@
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, Image, Pressable, Alert, KeyboardAvoidingView } from 'react-native'
-import React, { useState } from 'react'
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, Image, Pressable, KeyboardAvoidingView } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
-import loginData from '../../fakeData/LoginData';
-import { useAuth } from '../../context/AuthContext';
+import RNFS from 'react-native-fs';
 
 export default function Login() {
-
-  const {isAuthentication,login} = useAuth();
-
-
   // useState
   const [username, setUsername] = useState('');
   const [pass, setPass] = useState('');
-
-  const userPass = loginData;
+  const [errorMessage, setErrorMessage] = useState('');
 
   const navigation = useNavigation();
 
-  const handleLoginButton = () => {
+  const handleLoginButton = async () => {
 
+    try{
 
-    if(username === userPass.username && pass === userPass.password ){
-      // isAuthentication(true);
-      login();
-      navigation.navigate('Blank');
+      const path = RNFS.DocumentDirectoryPath + '/Login.json';
+      
+      console.log(path);
+      
+      const existingData = await  RNFS.exists(path) ? JSON.parse(await RNFS.readFile(path)) : [];
+      
+      const user = existingData.find((u)=> u.username === username && u.password == pass);
+      if(user){
+        setErrorMessage('');
+        navigation.navigate('Blank');
+      }
+      else{
+        setErrorMessage('Invalid username or password');
+      }
+      
     }
-    else{
-      Alert.alert('Authentication Failed', 'Invalid username or password');
+    catch(err){
+      console.error("Error Reading data from JSON file", err); 
     }
   }
+
+
+  useEffect(()=>{
+    const timeoutId = setTimeout(()=>{
+      setErrorMessage('');
+    })
+
+    return ()=> clearTimeout(timeoutId)
+  },2000);
+
+
+
   return (
     
     <KeyboardAvoidingView 
@@ -59,7 +77,7 @@ export default function Login() {
           </View>
         </View>
 
-        <TouchableOpacity onPress={() => handleLoginButton()} >
+        <TouchableOpacity onPress={handleLoginButton} >
           <LinearGradient
             colors={['#d4c8ae', '#57102c']}
             start={{ x: 0.1, y: 0.0 }}
@@ -70,6 +88,7 @@ export default function Login() {
 
           </LinearGradient>
         </TouchableOpacity>
+        {errorMessage !== '' && <Text style={{ color: 'red' }}>{errorMessage}</Text>}
 
         <View style={{ flexDirection: 'row', alignItems:'center',justifyContent:'center' }} >
           <Text style={{ color: '#fff', marginHorizontal: 2 }} >New User?</Text>

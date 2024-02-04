@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native'
+import { View, Text, ScrollView, TouchableOpacity, Pressable } from 'react-native'
 import React from 'react'
 import Timepicker from '../../component/Time/Timepicker'
 import DatePicker from '../../component/Date/DatePicker'
@@ -42,18 +42,18 @@ const BookingDetails = () => {
         </ScrollView>
       </LinearGradient>
       {/* paying */}
-      <View style={{ flex: 1, backgroundColor: '#faf0d9' }} >
+      <View style={{ flex: 1, backgroundColor: '#e3b3aa' }} >
 
-        <TouchableOpacity onPress={() => navigation.navigate('Payment', { price: amount })}  >
+        <Pressable onPress={() => navigation.navigate('Payment', { price: amount })}  >
           <View
-            style={{ padding: 10, margin: 5, backgroundColor:'#57102c',elevation:2, borderRadius: 10, justifyContent: 'center', alignItems: 'center' }}
+            style={{ padding: 10, margin: 5, backgroundColor:'#57102c', borderRadius: 10, justifyContent: 'center', alignItems: 'center' }}
           >
             <View style={{ flexDirection: 'row', alignItems: 'center' }} >
               <Text style={{ marginRight: 5, fontSize: 18, color: 'white' }} >Book your chef</Text>
               <Text style={{ fontWeight: 'bold', fontSize: 14, color: 'white' }} >₹{amount}</Text>
             </View>
           </View>
-        </TouchableOpacity>
+        </Pressable>
       </View>
     </>
   )

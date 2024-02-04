@@ -3,11 +3,16 @@ import {createSlice} from '@reduxjs/toolkit';
 const foodSlice = createSlice({
     name:'dish',
     initialState:{
-        foodList:[]
+        data:[],
+        addFood:[],
     },
     reducers:{
-        setFoodList:(state,action) =>{
-            state.foodList = action.payload;
+        setData : (state,action) =>{
+        state.data = [...state.data, ...action.payload ]; 
+        },
+        addFav: (state,action)=>{
+            if(state.addFood.find((item) => item.id === action.payload.id )) {}
+            else state.addFav.push(action.payload);
         }
     }
 });
