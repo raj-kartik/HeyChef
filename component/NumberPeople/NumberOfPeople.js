@@ -2,6 +2,7 @@ import { View, Text, Pressable } from 'react-native'
 import React, { useState } from 'react'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import IonIcons from 'react-native-vector-icons/Ionicons'
+import { COLORS } from '../styles/Colors'
 
 const NumberOfPeople = () => {
 
@@ -22,7 +23,7 @@ const NumberOfPeople = () => {
                 <View style={{flexDirection:'row', backgroundColor:'#faf0d9',borderRadius:10,marginHorizontal:10,alignItems:'center', paddingHorizontal:10}} >
 
                     <Pressable onPress={()=>setPeople(numOfPeople+1)} >
-                        <IonIcons name='add-circle-sharp' size={25} color={'#401d11'} />
+                        <IonIcons name='add-circle-sharp' size={25} color={COLORS.primary} />
                     </Pressable>
 
                     <View style={{marginHorizontal:2,padding:10,borderRadius:60}} >
@@ -30,7 +31,7 @@ const NumberOfPeople = () => {
                     </View>
 
                     <Pressable onPress={()=>setNumOfPeople((prevCount) => (prevCount > 0 ? prevCount - 1 : 0))}  >
-                        <IonIcons name='remove-circle-sharp' size={25} color={'#401d11'} />
+                        <IonIcons name='remove-circle-sharp' size={25} color={COLORS.primary} />
                     </Pressable>
 
                 </View>
@@ -46,7 +47,7 @@ const NumberOfPeople = () => {
             </View>
 
             <View style={{flexDirection:'row',marginLeft:5,alignItems:'center',paddingHorizontal:5  }} >
-                <IonIcons name='time-outline' size={20} color='#401d11' style={{paddingRight:5}} />
+                <IonIcons name='time-outline' size={20} color={COLORS.primary} style={{paddingRight:5}} />
                 <Text style={{color:'#000'}} >Total cooking time </Text>
                 <Text style={{color:'#000',fontWeight:'bold'}} >1.5 hours</Text>
             </View>

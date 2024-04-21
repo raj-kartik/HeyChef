@@ -8,13 +8,7 @@ import Suggestions from '../../Suggestions/Suggestions'
 const ChefForDay = () => {
   const navigation = useNavigation();
   return (
-    <LinearGradient
-      colors={['#57102c', '#ffecd2', '#57102c']}
-      start={{ x: 0.5, y: 0.05 }}
-      // x = 0 : right || left = 1
-      end={{ x: 1, y: 3 }}
-
-      style={{ flex: 10 }} >
+    <View style={{backgroundColor:"white", flex:1}} >
 
       {/* <View style={styles.header} >
         <Text style={{color:'white',fontSize:20,fontWeight:'bold'}} >HERE ARE SOME SUGGESTIONS FOR YOU</Text>
@@ -32,17 +26,14 @@ const ChefForDay = () => {
         </View>
         
       </View>
-    </LinearGradient>
+    </View>
   )
 }
 
 const styles = StyleSheet.create({
   header: {
     backgroundColor: '#57102c',
-    // padding:10,
     paddingVertical: 14,
-    // margin:2,
-    // borderRadius:8,
     alignItems: 'center'
   },
   suggestContainer: {

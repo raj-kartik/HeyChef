@@ -1,65 +1,74 @@
 import { View, Text, FlatList, Image, TouchableOpacity, Pressable, FlatListComponent } from 'react-native'
-import React, { useState } from 'react'
-import LinearGradient from 'react-native-linear-gradient'
+import React from 'react'
 import { VegFood } from '../../../fakeData/Dish/dish'
 import IonIcons from 'react-native-vector-icons/Ionicons'
+import useCart from '../../../component/Hooks/useCart'
+import { COLORS } from '../../../component/styles/Colors'
 
 const Veg = () => {
-
-    const [isPress, setIsPress] = useState(true);
-
-    const addButtonHandle = (itemId, itemInCart, itemAdded) =>{
-        console.log(itemId, itemAdded);
-
-        itemAdded = !itemAdded
-    }
-
     const vegDish = VegFood.indianVegetarianFood;
-    const RenderItem = ({ item }) => (
-        <Pressable style={{backgroundColor:'#57102c', marginHorizontal:5,marginVertical:8,width:'97%',marginRight:30, padding:5, borderRadius:10, flexDirection:'row',justifyContent:'space-between', alignItems:'center'}} >
+    const {toggleCart, isItemInCart, } = useCart();
+
+    const RenderItem = ({ item }) => {
+        return<View style={{justifyContent:"center",alignItems:'center'}} >
+             <View 
+                style={{
+                    backgroundColor:COLORS.secondary, 
+                    marginVertical:5,
+                    width:'97%', 
+                    padding:5, 
+                    borderRadius:8,
+                    justifyContent:'space-between',
+                    flexDirection:'row',
+                }}
+            >
+
             <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}} >
                 <View style={{margin:10}} >
-                    <Image source={{ uri: item.imagUrl }} style={{ width: 80, height: 80, borderRadius:50, borderWidth:2, padding:13, borderColor:'#fff' }} />
+                    <Image source={{ uri: item.imagUrl }} style={{ width: 80, height: 80, borderRadius:50, borderWidth:2, padding:13, borderColor:COLORS.primary }} />
                 </View>
 
                 <View >
                     <View style={{flexDirection:'row', justifyContent:'space-between'}} >
-                        <Text style={{color:'#ffecd2', fontSize:25, fontWeight:'bold'}} >{item.dishName}</Text>
+                        <Text style={{color:COLORS.primary, fontSize:25, fontWeight:'bold'}} >{item.dishName}</Text>
                     </View>
 
                     <Text style={{color:'#f2a030',fontSize:18, fontWeight:'bold'}} >Ingredients</Text>
-                    <Text style={{fontSize:12}} >{item.ingredients.join(', ')}</Text>
+                    <Text style={{fontSize: 12, color: COLORS.primaryText}}>
+                        {item.ingredients.map((ingredient, index) => (
+                            <React.Fragment key={index}>
+                            {ingredient}{(index + 1) % 3 === 0 ? '\n' : ', '}
+                            </React.Fragment>
+                        ))}
+                    </Text>
                 </View>
             </View>
-            
             <View style={{padding:10,borderRadius:5,justifyContent:'center',alignItems:'center',marginRight:5}}  >
-                <Pressable onPress={ ()=>{item.isAdded=!item.isAdded ,addButtonHandle(item.id, item.inCart, item.isAdded)}  } >
-                    {item.isAdded?
-                        <IonIcons name="add-circle" color='#f2a030' size={30}  />: 
-                        <IonIcons name="remove-circle" color='#f2a030' size={30}  />
-                    }
-                    
-                </Pressable>
+
+                <TouchableOpacity onPress={() => toggleCart(item)} >
+                    <View>
+                        {isItemInCart(item.id)?
+                            <IonIcons name="fast-food" color='#f2a030' size={30} style={{backgroundColor:"white", padding:7, borderRadius:30, borderWidth:1, borderColor:COLORS.primary}}  />
+                            :
+                            <IonIcons name="fast-food-outline" size={30} style={{backgroundColor:"white", padding:7, borderRadius:30, color:'#57102c', borderWidth:1, borderColor:COLORS.primary}}   />
+                        }
+                    </View>
+                </TouchableOpacity>
             </View>
-        </Pressable>
-      );
+        </View>
+        </View>
+       
+    };
 
   return (
-    <LinearGradient
-        colors={['#57102c', '#ffecd2', '#57102c']}
-        start={{ x: 0.5, y: 0.05 }}
-        // x = 0 : right || left = 1
-        end={{ x: 1, y: 3 }}
-        style={{ flex: 10 }} >
-            
-            <FlatList
-                data={vegDish}
-                keyExtractor={(item) => item.id.toString()}
+    <View   style={{backgroundColor:"white", flex:1, margin:0}}   > 
+        <FlatList
+            data={vegDish}
+            keyExtractor={(item) => item.id.toString()}
 
-                renderItem={({item}) => <RenderItem item={item} /> }
-            />
-
-    </LinearGradient>
+            renderItem={({item}) => <RenderItem item={item} /> }
+        />
+    </View>
   )
 }
 

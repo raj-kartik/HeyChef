@@ -1,8 +1,8 @@
 const { configureStore } = require("@reduxjs/toolkit");
-import dishReducer from './Slice';
+import foodReducer from './Slice/FoodSlice';
 
 export const store = configureStore({
     reducer:{
-        items: dishReducer,
+        items: foodReducer,
     }
 })

@@ -14,35 +14,30 @@ const BookingDetails = () => {
   const amount = 500;
   return (
     <>
-      <LinearGradient
-        colors={['#57102c', '#ffecd2', '#57102c']}
-        start={{ x: 0.5, y: 0.05 }}
-        // x = 0 : right || left = 1
-        end={{ x: 1, y: 3 }}
-
-        style={{ flex: 10 }} >
+      <View
+        style={{ flex: 10, backgroundColor:'#fff' }} >
 
         <ScrollView >
 
           {/* date picker */}
-          <View style={{ flex: 3 }} >
+          <View style={{ flex: 1 }} >
             <DatePicker />
           </View>
 
           {/* time picker */}
-          <View style={{ marginVertical: 10, flex: 3 }} >
+          <View style={{ marginVertical: 3, flex: 1 }} >
             <Timepicker />
           </View>
 
           {/* number of people */}
-          <View style={{ flex: 1 }} >
+          <View style={{ flex: 1, margin:5, elevation:5 }} >
             <NumberOfPeople />
           </View>
 
         </ScrollView>
-      </LinearGradient>
+      </View>
       {/* paying */}
-      <View style={{ flex: 1, backgroundColor: '#e3b3aa' }} >
+      <View style={{ flex: 1, backgroundColor: '#fff' }} >
 
         <Pressable onPress={() => navigation.navigate('Payment', { price: amount })}  >
           <View

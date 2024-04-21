@@ -56,11 +56,11 @@ export default function Login() {
     >
 
       <View style={{flex:1}} >
-        <Image style={{ width: 400, height: 400, marginRight: -300, marginTop: -220 }} source={require('../loginImage/loginside.png')} />
+        <Image style={styles.iconFixed} source={require('../loginImage/loginside.png')} />
       </View>
 
         
-      <View style={{justifyContent:'center', flex:10}} >
+      <View style={{justifyContent:'center', position:"fixed",marginBottom:40,flex:10}} >
         <View style={{alignItems:'center'}} >
           <Image style={{width:100,height:50, marginBottom:5}} source={require('../loginImage/logo.png')} />
         </View>
@@ -125,7 +125,8 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     backgroundColor: '#d4c8ae',
-    width:380
+    width:380,
+    position:"fixed"
   },
   inputMargin: {
     marginVertical: 10
@@ -140,5 +141,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     justifyContent:'center',
     alignItems:'center'
+  },
+  iconFixed:{
+    width: 400, 
+    height: 400, 
+    position:"absolute",
+    left:0,
+    top:1,
+    top:-200
   }
 })
